@@ -1,0 +1,14 @@
+version: "3"
+services:
+  backend-red:
+    build:
+       context: ./svcred/
+       dockerfile: ./Dockerfile
+  apigw-nginx:
+    build:
+       context: ./svcapigw/
+       dockerfile: ./Dockerfile
+    ports:
+      - "8888:80"
+    extra_hosts:
+      - "backend-blue:172.16.2.7"
